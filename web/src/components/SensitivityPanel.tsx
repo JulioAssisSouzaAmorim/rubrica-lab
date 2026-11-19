@@ -43,10 +43,12 @@ export function SensitivityPanel({ sheet, enabled }: Props) {
 
   return (
     <section className="panel wide" aria-labelledby="sensitivity-title">
-      <h2 id="sensitivity-title">Sensibilidade</h2>
+      <h2 id="sensitivity-title">
+        <span className="step">4</span> Explore cenários
+      </h2>
       <p className="hint">
-        O holerite tratado como função de uma entrada. As quinas na curva são as mudanças de faixa do INSS e
-        do IRRF.
+        Escolha uma entrada e um intervalo: o gráfico mostra como bruto e líquido variam. As quinas na curva
+        são as mudanças de faixa do INSS e do IRRF.
       </p>
       <div className="controls">
         <label>

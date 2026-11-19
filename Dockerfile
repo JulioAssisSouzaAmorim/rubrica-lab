@@ -19,6 +19,8 @@ FROM mcr.microsoft.com/dotnet/aspnet:10.0
 WORKDIR /app
 COPY --from=api /out .
 COPY --from=web /out/wwwroot ./wwwroot
+RUN mkdir -p /app/App_Data && chown app /app/App_Data
+VOLUME /app/App_Data
 ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
 USER app

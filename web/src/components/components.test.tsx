@@ -69,12 +69,21 @@ describe('Payslip', () => {
   });
 });
 
+const editorProps = {
+  sheet,
+  diagnostics: [],
+  functions: [{ name: 'max', signature: 'max(a, b, ...)', description: 'Maior dos valores.' }],
+  onChange: () => {},
+  onSaveRubric: () => {},
+  onSaveTable: () => {},
+};
+
 describe('SheetEditor', () => {
   it('edits inputs, formulas and the rubric list', async () => {
     const onChange = vi.fn<(next: PayrollSheet) => void>();
-    render(<SheetEditor sheet={sheet} diagnostics={[]} onChange={onChange} />);
+    render(<SheetEditor {...editorProps} onChange={onChange} />);
 
-    fireEvent.change(screen.getByRole('spinbutton'), { target: { value: '2500' } });
+    fireEvent.change(screen.getByRole('spinbutton', { name: 'SALARIO_BASE' }), { target: { value: '2500' } });
     expect(onChange).toHaveBeenLastCalledWith(expect.objectContaining({ inputs: { SALARIO_BASE: 2500 } }));
 
     fireEvent.change(screen.getByLabelText('Fórmula de INSS'), { target: { value: 'SALARIO * 9%' } });
@@ -90,9 +99,8 @@ describe('SheetEditor', () => {
   it('lists sheet-level diagnostics', () => {
     render(
       <SheetEditor
-        sheet={sheet}
+        {...editorProps}
         diagnostics={[{ code: 'RL004', message: 'Dependência circular: A → A.', span: null, rubric: null }]}
-        onChange={() => {}}
       />,
     );
     expect(screen.getByRole('alert')).toHaveTextContent('Dependência circular');

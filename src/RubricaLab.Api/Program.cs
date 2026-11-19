@@ -13,6 +13,9 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 builder.Services.Configure<RouteHandlerOptions>(options => options.ThrowOnBadRequest = false);
 builder.Services.AddProblemDetails();
 builder.Services.AddOpenApi();
+builder.Services.AddSingleton(services => new LibraryStore(
+    services.GetRequiredService<IConfiguration>()["Library:Path"]
+    ?? Path.Combine(services.GetRequiredService<IHostEnvironment>().ContentRootPath, "App_Data", "library.json")));
 
 var app = builder.Build();
 
@@ -27,6 +30,7 @@ if (app.Environment.IsDevelopment())
 app.UseDefaultFiles();
 app.UseStaticFiles();
 app.MapRubricaApi();
+app.MapLibraryApi();
 app.MapFallbackToFile("index.html");
 
 app.Run();

@@ -105,7 +105,8 @@ public static class PayrollCompiler
         return new CompilationResult(new CompiledSheet(steps, declared, tables, sheet.Inputs), []);
     }
 
-    private static string? ValidateTable(TaxTable table)
+    /// <summary>Returns a description of what is wrong with the table, or null when it is valid.</summary>
+    public static string? ValidateTable(TaxTable table)
     {
         if (!Lexer.IsValidIdentifier(table.Code))
         {

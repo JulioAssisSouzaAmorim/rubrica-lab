@@ -89,3 +89,24 @@ export interface SweepRequest {
   to: number;
   points: number;
 }
+
+export interface SavedRubric {
+  rubric: Rubric;
+  builtIn: boolean;
+}
+
+export interface SavedTable {
+  table: TaxTable;
+  builtIn: boolean;
+}
+
+export interface Library {
+  rubrics: SavedRubric[];
+  tables: SavedTable[];
+}
+
+export interface FunctionInfo {
+  name: string;
+  signature: string;
+  description: string;
+}

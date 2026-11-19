@@ -9,6 +9,7 @@
     "node": ">=22"
   },
   "scripts": {
+    "start": "npm run build -w web && dotnet run --project src/RubricaLab.Api",
     "prepare": "node scripts/install-hooks.mjs",
     "dev:api": "dotnet run --project src/RubricaLab.Api",
     "dev:web": "npm run dev -w web",

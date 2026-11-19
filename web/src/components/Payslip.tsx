@@ -32,7 +32,10 @@ export function Payslip({ result, selected, onSelect }: Props) {
 
   return (
     <section className="panel" aria-labelledby="payslip-title">
-      <h2 id="payslip-title">Holerite</h2>
+      <h2 id="payslip-title">
+        <span className="step">2</span> Confira o holerite
+      </h2>
+      <p className="hint">Clique em qualquer linha para ver, logo abaixo, como aquele valor foi calculado.</p>
       <div className="payslip">
         <table>
           <caption>Proventos</caption>
@@ -65,6 +68,7 @@ export function Payslip({ result, selected, onSelect }: Props) {
       </table>
 
       <h3>Ordem de cálculo</h3>
+      <p className="hint">A sequência que o motor escolheu para respeitar as dependências.</p>
       <ol className="order">
         {result.order.map((code) => (
           <li key={code} className="mono">
