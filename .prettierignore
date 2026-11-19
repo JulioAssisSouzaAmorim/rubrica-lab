@@ -1,0 +1,10 @@
+bin/
+obj/
+**/wwwroot/
+coverage/
+package-lock.json
+web/test-results/
+web/playwright-report/
+*.cs
+*.csproj
+*.slnx

@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/RubricaLab.Api/RubricaLab.Api.csproj" />
+    <Project Path="src/RubricaLab.Core/RubricaLab.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/RubricaLab.Api.Tests/RubricaLab.Api.Tests.csproj" />
+    <Project Path="tests/RubricaLab.Core.Tests/RubricaLab.Core.Tests.csproj" />
+  </Folder>
+</Solution>

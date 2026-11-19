@@ -1,0 +1,35 @@
+{
+  "name": "rubrica-lab",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "web"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "prepare": "node scripts/install-hooks.mjs",
+    "dev:api": "dotnet run --project src/RubricaLab.Api",
+    "dev:web": "npm run dev -w web",
+    "lint": "eslint .",
+    "format": "prettier --write . && dotnet format RubricaLab.slnx",
+    "format:check": "prettier --check . && dotnet format RubricaLab.slnx --verify-no-changes",
+    "typecheck": "npm run typecheck -w web",
+    "test:scripts": "node --test \"scripts/**/*.test.mjs\"",
+    "test:web": "npm run test -w web",
+    "test:dotnet": "dotnet test RubricaLab.slnx",
+    "test:e2e": "npm run e2e -w web",
+    "test": "npm run test:scripts && npm run test:web && npm run test:dotnet",
+    "verify": "node scripts/hooks/pre-push.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.15.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.14.0",
+    "prettier": "^3.10.1",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.73.0"
+  }
+}
